@@ -1,0 +1,86 @@
+grades = [
+    # First line is descriptive header. Subsequent lines hold data
+    ['Student', 'Exam 1', 'Exam 2', 'Exam 3'],
+    ['Thorny', '100', '90', '80'],
+    ['Mac', '88', '99', '111'],
+    ['Farva', '45', '56', '67'],
+    ['Rabbit', '59', '61', '67'],
+    ['Ursula', '73', '79', '83'],
+    ['Foster', '89', '97', '101']
+]
+
+students=[i[0] for i in grades[1:]]
+students
+
+
+# In[94]:
+
+
+assignments=grades[0][1:]
+assignments 
+
+
+# In[120]:
+
+
+grade_lists={}
+for l in grades[1:]:
+    grade_lists[l[0]]= [int(i) for i in l[1:]]
+    
+    
+grade_lists    
+grade_lists['Farva']
+
+
+# In[ ]:
+
+
+grade_dicts['Thorny']['Exam 1'] == 100.
+
+
+# In[122]:
+
+
+grade_dicts = {} # Empty
+for l in grades[1:]:
+    grade_dicts[l[0]]=dict(zip(assignments,[int(i) for i in l[1:]]))
+grade_dicts['Thorny']['Exam 1']
+
+
+# In[127]:
+
+
+from statistics import mean
+avg_grades_by_student={}
+for l in grades[1:]:
+    avg_grades_by_student[l[0]]=mean([int(i) for i in l[1:]])
+avg_grades_by_student['Thorny']
+
+
+# In[157]:
+
+
+grades_by_assignment={}
+for k,a in enumerate (assignments):
+    grades_by_assignment[a]=[int(l[k+1]) for l in grades[1:]]
+    
+grades_by_assignment    
+
+
+# In[162]:
+
+
+avg_grades_by_assignment={}
+from statistics import mean
+
+avg_grades_by_assignment={a:mean(g) for a,g in grades_by_assignment.items()}
+avg_grades_by_assignment
+
+
+# In[182]:
+
+
+rank = sorted(avg_grades_by_student, key=avg_grades_by_student.get, reverse=True)
+avg_grades_by_student,rank
+
+
