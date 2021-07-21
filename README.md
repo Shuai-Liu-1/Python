@@ -1,2 +1,2 @@
 # Python
-Basic Python knowledge from Computing for Data Analysis (CSE6040)
+All about Python what I learned
